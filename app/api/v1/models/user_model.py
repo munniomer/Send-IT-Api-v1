@@ -6,7 +6,7 @@ class UserModel(object):
     def __init__(self):
       self.db = users 
 
-    def add_user(self,fname,lname,email,phone,password,city):
+    def add_user(self,fname,lname,email,phone,password,confirm_password,city):
         """ Method for saving user to the dictionary """
         payload = {
             "userId": len(self.db)+1,
@@ -15,10 +15,12 @@ class UserModel(object):
             "email" :  email,
             "phone":  phone,
             "password" : password,
-            "city": city
+            "confirm_password" : confirm_password,
+            "city": city,
          
         }
 
+        
         self.db.append(payload)
     
     
