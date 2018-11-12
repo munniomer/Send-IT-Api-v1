@@ -24,7 +24,32 @@ class SignupResource(Resource):
         confirm_password = request_data["confirm_password"]
         city = request_data["city"]
 
+        if not validate.valid_name(fname):
+            return {'message': "first name cant be empty and should only contain letters "}, 400
+
+        if not validate.valid_name(lname):
+            return {'message': "last name cant be empty and should only contain letters "}, 400
+
+        if not validate.valid_email(email):
+            return {'message': "Please enter a valid email "}, 400
+
+        if not isinstance(phone,int):
+            return {'message': "Please enter a valid phone number "}, 400
+
+        if not validate.valid_password(password):
+            return {'message': "passowrd cannot be less than 3"}, 400
+
+        if not validate.valid_password(confirm_password) :
+            return {'message': "confirm passowrd cannot be less than 3"}, 400
         db.add_user(fname, lname, email, phone, password, confirm_password,city)
+
+        if confirm_password != password :
+            return {"message": "confirm password does not match password"}
+
+
+
+        if not validate.valid_name(city):
+                return {'message': "City cant be empty and should only contain letters "}, 400
         
         
         return {

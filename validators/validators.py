@@ -14,7 +14,7 @@ class Validators:
 
     def valid_password(self, password):
         """ valid email """
-        regex = "^[a-zA-Z0-9]{3,}$"
+        regex = "^[a-zA-Z0-9@_+-.]{3,}$"
         return re.match(regex,password)
 
     
