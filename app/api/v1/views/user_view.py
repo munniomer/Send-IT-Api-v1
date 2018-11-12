@@ -41,15 +41,14 @@ class SignupResource(Resource):
 
         if not validate.valid_password(confirm_password) :
             return {'message': "confirm passowrd cannot be less than 3"}, 400
-        db.add_user(fname, lname, email, phone, password, confirm_password,city)
 
         if confirm_password != password :
             return {"message": "confirm password does not match password"}
 
-
-
         if not validate.valid_name(city):
                 return {'message': "City cant be empty and should only contain letters "}, 400
+        
+        db.add_user(fname, lname, email, phone, password, confirm_password,city)
         
         
         return {
