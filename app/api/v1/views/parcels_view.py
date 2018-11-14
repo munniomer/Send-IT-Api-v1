@@ -26,11 +26,6 @@ class ParcelResource(Resource):
         recepient_phone = request_data["recepient_phone"]
         package_description = request_data["package_description"]
 
-        # # Check if user exists
-        # check_user = userobj.check_user(sender_Id)
-        # if not check_user:
-        #     return {'msg': 'User doesnt exists! Create user first'}, 400
-
         # Check for Empty fields
         if pickup_location == "" or destination == "" or package_description == "":
             return {'message': "Please fill all the filds"}, 400
@@ -47,8 +42,7 @@ class ParcelResource(Resource):
         if not validate.valid_name(recipient_name):
             return {'message': "recipient name cant be empty and should only contain letters "}, 400
 
-
         db.add_parcel(sender_Id, pickup_location, destination, weight,
                       quantity, recipient_name, recepient_phone, package_description)
 
-        return {"message": "parcel delivery order successfully created", },201
+        return {"message": "parcel delivery order successfully created", }, 201

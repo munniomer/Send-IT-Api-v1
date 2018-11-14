@@ -2,6 +2,7 @@ import unittest
 from app import create_app
 import json
 
+
 class BaseTest(unittest.TestCase):
     """This is the test client"""
 
@@ -19,7 +20,6 @@ class BaseTest(unittest.TestCase):
             "city": "nairobi"
         }
 
-        
         self.new_parcel = {
             "sender_Id": 1,
             "pickup_location": "Kisumu",
@@ -43,7 +43,6 @@ class BaseTest(unittest.TestCase):
             "package_description": "Mobile phone"
 
         }
-
 
         self.new_parcel3 = {
             "sender_Id": 1,

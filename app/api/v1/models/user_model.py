@@ -1,5 +1,6 @@
 users = []
 
+
 class UserModel(object):
     """Class user models."""
 
@@ -20,8 +21,6 @@ class UserModel(object):
         }
         self.db.append(payload)
 
-        # return self.db
-
     def get_all_uers(self):
         """ Method for getting all available users in the dictionary """
         return self.db
@@ -31,9 +30,9 @@ class UserModel(object):
         user = [user for user in self.db if userId == user["userId"]]
         return user
 
-    def check_user(self,userId):
+    def check_user(self, userId):
         """Method for checking if user exist"""
         user = [user for user in users if user['userId'] == userId]
         if user:
-           return True
+            return True
         return False
