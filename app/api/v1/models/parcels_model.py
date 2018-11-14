@@ -31,7 +31,7 @@ class ParcelModel(object):
         """ Method for getting all available parcel orders """
         #check if the dh is empty
         if len(parcels) == 0:
-            return {'msg':'There are no parcels created'}, 400
+            return {'message':'There are no parcels created'}, 400
         return {'All parcel orders':self.db}, 200
 
  

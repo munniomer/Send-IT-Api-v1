@@ -46,3 +46,8 @@ class ParcelResource(Resource):
                       quantity, recipient_name, recepient_phone, package_description)
 
         return {"message": "parcel delivery order successfully created", }, 201
+
+    def get(self):
+        """Method for fetching all parcel delivery orders"""
+        parcels = db.get_all_parcels()
+        return parcels
