@@ -69,14 +69,14 @@ class BaseTest(unittest.TestCase):
         }
 
         self.new_parcel5 = {
-            "sender_Id": 1,
+            "sender_Id": 5,
             "pickup_location": "Kisumu",
             "destination": "Nairobi",
             "weight": 3,
             "quantity": 1,
             "recipient_name": "",
             "recepient_phone": 706335721,
-            "package_description": "Mobile phone"
+            "package_description": "laptop"
 
         }
 
