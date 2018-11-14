@@ -29,3 +29,10 @@ class UserModel(object):
         """ Method for getting a user by userId"""
         user = [user for user in self.db if userId == user["userId"]]
         return user
+
+    def check_user(self, userId):
+        """Method for checking if user exist"""
+        user = [user for user in users if user['userId'] == userId]
+        if user:
+            return True
+        return False
