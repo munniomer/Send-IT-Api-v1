@@ -13,3 +13,4 @@ app.add_resource(SignupResource, '/user/register')
 
 # Parcels
 app.add_resource(ParcelResource, '/Parcels')
+
