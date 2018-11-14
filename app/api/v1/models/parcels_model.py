@@ -29,9 +29,13 @@ class ParcelModel(object):
 
     def get_all_parcels(self):
         """ Method for getting all available parcel orders """
-        #check if the dh is empty
+        # check if the dh is empty
         if len(parcels) == 0:
-            return {'message':'There are no parcels created'}, 400
-        return {'All parcel orders':self.db}, 200
+            return {'message': 'There are no parcels created'}, 400
+        return {'All parcel orders': self.db}, 200
 
- 
+
+    def get_specific_parcel(self, parcel_Id):
+        """ Method for getting a specific parcel orders """
+        parcel = [parcel for parcel in parcels if parcel['parcel_Id'] == parcel_Id]
+        return parcel

@@ -51,3 +51,15 @@ class ParcelResource(Resource):
         """Method for fetching all parcel delivery orders"""
         parcels = db.get_all_parcels()
         return parcels
+
+
+class ParcelSpecific(Resource):
+    """ class for specific parcel """
+
+    def get(self, parcel_Id):
+        """getting a parcel delivery record by the ID"""
+        parcel = db.get_specific_parcel(parcel_Id)
+        if parcel:
+            return {'parcel order': parcel[0]}, 200
+        return {'message': "parcel order not found"}, 404
+       
