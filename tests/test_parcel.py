@@ -48,6 +48,7 @@ class TestParcel(BaseTest):
         self.assertIn('Make sure weight, quantity or phone are 0 or negative',
                       str(respon.data))
 
-  
-
-    
+    def test_get_all_parcels(self):
+        """Test to get all parcel delivery orders"""
+        respon = self.client.get('/api/v1/Parcels/')
+        return respon
