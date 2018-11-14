@@ -1,18 +1,18 @@
-from datetime import datetime
 parcels = []
 
+
 class ParcelModel(object):
-    """Class Parcel models."""
+    """Class user models."""
 
     def __init__(self):
-        """ initializes the parcel db"""
+        """Initializes the parcel db"""
         self.db = parcels
 
-    def add_parcel(self, sender_Id, pickup_location, destination, weight, quantity, recipient_name, 
-                    recepient_phone, package_description):
-        """ Method for saving new orders to the dictionary """
+    def add_parcel(self, sender_Id, pickup_location, destination, weight,
+                   quantity, recipient_name, recepient_phone, package_description):
+        """ Method for saving user to the dictionary """
         payload = {
-            "parcelId": len(self.db)+1,
+            "parcel_Id": len(self.db)+1,
             "sender_Id": sender_Id,
             "pickup_location": pickup_location,
             "destination":  destination,
@@ -21,9 +21,10 @@ class ParcelModel(object):
             "recipient_name": recipient_name,
             "recepient_phone": recepient_phone,
             "package_description": package_description,
-            "status": "in-transit",
+            "status": "active",
             "current_location": pickup_location,
-            "sent_date": datetime.now,
-            "price": "Kshs." + str(float(weight) * 10)
+            "price": "Kshs." + str(float(weight) * 100)
         }
         self.db.append(payload)
+
+        # return self.db
