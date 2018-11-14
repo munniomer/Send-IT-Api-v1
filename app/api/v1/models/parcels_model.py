@@ -27,4 +27,11 @@ class ParcelModel(object):
         }
         self.db.append(payload)
 
-       
+    def get_all_parcels(self):
+        """ Method for getting all available parcel orders """
+        #check if the dh is empty
+        if len(parcels) == 0:
+            return {'message':'There are no parcels created'}, 400
+        return {'All parcel orders':self.db}, 200
+
+ 
