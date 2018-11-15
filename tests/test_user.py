@@ -51,22 +51,5 @@ class TestUSer(BaseTest):
         self.assertIn('confirm password does not match password',
                       str(respon.data))
 
-  
-
-
-
-
-
-
-
-        # # Checks if passwords are empty or less than 3
-        # if not validate.valid_password(password) or not validate.valid_password(confirm_password):
-        #     return {'message': "Please check if your password or confirm password are empty or less than 3"}, 400
-
-        # # checks if confirm password is equal to password
-        # if confirm_password != password:
-        #     return {"message": "confirm password does not match password"}
-
-
 
     
