@@ -47,8 +47,18 @@ class SignupResource(Resource):
         if not validate.valid_name(city):
             return {'message': "City cant be empty and should only contain letters "}, 400
 
+        check_email = db.check_email(email)
+        if check_email:
+            return {'message': 'That email exists. use a unique email'}, 400
+
         db.add_user(fname, lname, email, phone,
                     password, confirm_password, city)
 
         return {
             "message": "User successfully created", }, 201
+
+    def get(self):
+        """Method for fetching all users"""
+        users = db.get_all_user()
+        return users
+

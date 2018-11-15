@@ -21,18 +21,16 @@ class UserModel(object):
         }
         self.db.append(payload)
 
-    def get_all_uers(self):
-        """ Method for getting all available users in the dictionary """
-        return self.db
-
-    def get_user(self, userId):
-        """ Method for getting a user by userId"""
-        user = [user for user in self.db if userId == user["userId"]]
-        return user
-
     def check_user(self, userId):
         """Method for checking if user exist"""
         user = [user for user in users if user['userId'] == userId]
+        if user:
+            return True
+        return False
+
+    def check_email(self, email):
+        """Method for checking if user email exist"""
+        user = [user for user in users if user['email'] == email]
         if user:
             return True
         return False
