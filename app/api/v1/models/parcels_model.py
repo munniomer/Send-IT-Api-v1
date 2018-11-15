@@ -3,7 +3,6 @@ parcels = []
 
 class ParcelModel(object):
     """Class user models."""
-
     def __init__(self):
         """Initializes the parcel db"""
         self.db = parcels
@@ -29,13 +28,18 @@ class ParcelModel(object):
 
     def get_all_parcels(self):
         """ Method for getting all available parcel orders """
-        # check if the dh is empty
-        if len(self.db) == 0:
-            return {'message': 'There are no parcels created'}, 400
-        return {'All parcel orders': self.db}, 200
-
+        return self.db
+     
 
     def get_specific_parcel(self, parcel_Id):
         """ Method for getting a specific parcel orders """
         parcel = [parcel for parcel in parcels if parcel['parcel_Id'] == parcel_Id]
         return parcel
+
+    def update_parcel(self, parcel_Id):
+        """ Method for canceling an order """
+        for parcel in parcels:
+            if parcel_Id == parcel["parcel_Id"]:
+                parcel.update({"status": "Cancelled"})
+                return parcel
+            

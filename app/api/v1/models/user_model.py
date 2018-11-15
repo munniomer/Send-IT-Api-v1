@@ -28,3 +28,11 @@ class UserModel(object):
         if user:
             return True
         return False
+
+    def check_user(self, userId):
+        """Method for checking if user exist"""
+        user = [user for user in users if user['userId'] == userId]
+        if user:
+            return True
+        return False
+
