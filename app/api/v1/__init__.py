@@ -14,6 +14,4 @@ app.add_resource(SignupResource, '/user/register')
 
 # Parcels
 app.add_resource(ParcelResource, '/parcels')
-app.add_resource(ParcelSpecific, '/parcels/<int:parcel_Id>')
-
-
+app.add_resource(ParcelSpecific, '/parcels/<int:parcel_Id>', '/parcels/<int:parcel_Id>/cancel')
