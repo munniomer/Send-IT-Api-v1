@@ -20,13 +20,7 @@ class UserModel(object):
             "city": city,
         }
         self.db.append(payload)
-
-    def check_user(self, userId):
-        """Method for checking if user exist"""
-        user = [user for user in users if user['userId'] == userId]
-        if user:
-            return True
-        return False
+        return self.db
 
     def check_email(self, email):
         """Method for checking if user email exist"""

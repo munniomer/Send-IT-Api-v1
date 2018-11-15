@@ -62,4 +62,3 @@ class ParcelSpecific(Resource):
         if parcel:
             return {'parcel order': parcel[0]}, 200
         return {'message': "parcel order not found"}, 404
-       
