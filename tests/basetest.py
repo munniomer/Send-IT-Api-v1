@@ -70,6 +70,25 @@ class BaseTest(unittest.TestCase):
             "city": "Mombasa"
         }
 
+        self.new_user6 = {
+            "fname": "Muna",
+            "lname": "Farah",
+            "email": "abdi@gmail.com",
+            "phone":  7063382571,
+            "password": "muni",
+            "confirm_password": "muni",
+            "city": "Mombasa"
+        }
+
+        self.new_user7 = {
+            "fname": "Muna",
+            "lname": "Farah",
+            "email": "abdi@gmail.com",
+            "phone":  7063382571,
+            "password": "muni",
+            "confirm_password": "muni",
+            "city": "Mombasa"
+        }
 
         self.new_parcel = {
             "sender_Id": 1,
@@ -120,7 +139,7 @@ class BaseTest(unittest.TestCase):
         }
 
         self.new_parcel5 = {
-            "sender_Id": 5,
+            "sender_Id": 1,
             "pickup_location": "Kisumu",
             "destination": "Nairobi",
             "weight": 3,

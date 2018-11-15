@@ -9,6 +9,7 @@ class TestParcel(BaseTest):
 
     def test_parcel_creation(self):
         """tests if parcel can be created"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
         self.assertEqual(respon.status_code, 201)
@@ -17,6 +18,7 @@ class TestParcel(BaseTest):
 
     def test_if_argument_has_invalid_data(self):
         """Tests if a invalid data is provided"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel3, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
@@ -25,6 +27,7 @@ class TestParcel(BaseTest):
 
     def test_if_argument_is_provided(self):
         """Tests if there is empty fields"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel4, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
@@ -33,6 +36,7 @@ class TestParcel(BaseTest):
 
     def test_recipient_name(self):
         """Tests if there is empty fields"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel5, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
@@ -41,6 +45,7 @@ class TestParcel(BaseTest):
 
     def test_if_arguemnt_has_negative_values(self):
         """Tests if a negative value is provided"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel2, content_type='application/json')
         self.assertEqual(respon.status_code, 400)
@@ -49,15 +54,42 @@ class TestParcel(BaseTest):
 
     def test_get_all_parcels(self):
         """Test to get all parcel delivery orders"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/parcels')
+        self.assertEqual(respon.status_code, 200)
+
+    def test_to_get_all_parcels(self):
+        """Test when no parcels are there to fetch"""
         respon = self.client.get('/api/v1/parcels/')
-        return respon
+        self.assertEqual(respon.status_code, 200)
 
     def test_get_specific_parcel(self):
         """Test to fetch a specific parcel order"""
-        respon = self.client.get('/api/v1/parcels/5')
-        return respon
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/parcels/1')
+        self.assertEqual(respon.status_code, 200)
 
     def test_for_get_specific_parcel(self):
         """Test when a specific parcel does not exist"""
-        response = self.client.get('/api/v1/parcels/1000')
-        return response
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/parcels/1000')
+        self.assertEqual(respon.status_code, 404)
+
+    def test_for_update_parcel(self):
+        """Test for canceling the order that doesnt exist"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        self.client.put(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/parcels/1/cancel')
+        self.assertEqual(respon.status_code, 200)
+
+    def test_update_parcel(self):
+        """Test for canceling the order that doesnt exist"""
+        respon = self.client.get('/api/v1/parcels/100/cancel')
+        self.assertEqual(respon.status_code, 404)

@@ -26,6 +26,12 @@ class ParcelResource(Resource):
         recepient_phone = request_data["recepient_phone"]
         package_description = request_data["package_description"]
 
+
+        # checks if user exists
+        check_user = userobj.check_user(sender_Id)
+        if not check_user:
+            return {'message': 'That user doesnt exist, plz create a user'}, 404
+
         # Check for Empty fields
         if pickup_location == "" or destination == "" or package_description == "":
             return {'message': "Please fill all the filds"}, 400
@@ -50,8 +56,11 @@ class ParcelResource(Resource):
     def get(self):
         """Method for fetching all parcel delivery orders"""
         parcels = db.get_all_parcels()
-        return parcels
-
+        # check if the dh is empty
+        if len(parcels) == 0:
+            return {'message': 'There are no parcels created'}, 404
+        return {'All parcel orders': parcels}, 200
+        
 
 class ParcelSpecific(Resource):
     """ class for specific parcel """
@@ -62,3 +71,11 @@ class ParcelSpecific(Resource):
         if parcel:
             return {'parcel order': parcel[0]}, 200
         return {'message': "parcel order not found"}, 404
+    
+    def put(self, parcel_Id):
+        """ Method for canceling an order """
+        parcel = ParcelModel.update_parcel(self,parcel_Id)
+        if parcel:
+            return {"Parcel odered cancelled": parcel},200
+        return {"message": "parcel does not exist"},404
+
