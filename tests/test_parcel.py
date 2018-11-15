@@ -9,7 +9,6 @@ class TestParcel(BaseTest):
 
     def test_parcel_creation(self):
         """tests if parcel can be created"""
-
         respon = self.client.post(
             "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
         self.assertEqual(respon.status_code, 201)
@@ -53,15 +52,12 @@ class TestParcel(BaseTest):
         respon = self.client.get('/api/v1/parcels/')
         return respon
 
-  
-
     def test_get_specific_parcel(self):
         """Test to fetch a specific parcel order"""
         respon = self.client.get('/api/v1/parcels/5')
         return respon
-    
+
     def test_for_get_specific_parcel(self):
         """Test when a specific parcel does not exist"""
         response = self.client.get('/api/v1/parcels/1000')
         return response
-    

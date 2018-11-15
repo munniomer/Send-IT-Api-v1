@@ -20,6 +20,57 @@ class BaseTest(unittest.TestCase):
             "city": "nairobi"
         }
 
+        self.new_user1 = {
+            "fname": "",
+            "lname": "",
+            "email": "muni@gmail.com",
+            "phone":  70633578,
+            "password": "muni123",
+            "confirm_password": "muni123",
+            "city": ""
+        }
+
+        self.new_user2 = {
+            "fname": "Ali",
+            "lname": "Abdi",
+            "email": "muni",
+            "phone":  70633578,
+            "password": "muni123",
+            "confirm_password": "muni123",
+            "city": "Mombasa"
+        }
+
+        self.new_user3 = {
+            "fname": "Muna",
+            "lname": "Farah",
+            "email": "munira@gmail.com",
+            "phone":  "",
+            "password": "muni123",
+            "confirm_password": "muni123",
+            "city": "Mombasa"
+        }
+
+        self.new_user4 = {
+            "fname": "Muna",
+            "lname": "Farah",
+            "email": "munira@gmail.com",
+            "phone":  706332571,
+            "password": "",
+            "confirm_password": "",
+            "city": "Mombasa"
+        }
+
+        self.new_user5 = {
+            "fname": "Muna",
+            "lname": "Farah",
+            "email": "munira@gmail.com",
+            "phone":  706332571,
+            "password": "muni",
+            "confirm_password": "abc",
+            "city": "Mombasa"
+        }
+
+
         self.new_parcel = {
             "sender_Id": 1,
             "pickup_location": "Kisumu",
