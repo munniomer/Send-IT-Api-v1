@@ -4,8 +4,8 @@ Send-IT is a courier service Application that helps users deliver parcels to dif
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/munniomer/Send-IT-Api-v1.svg?branch=ft-cancel-order-v1-161985069)](https://travis-ci.com/munniomer/Send-IT-Api-v1)
-[![Coverage Status](https://coveralls.io/repos/github/munniomer/Send-IT-Api-v1/badge.svg?branch=ft-cancel-order-v1-161985069)](https://coveralls.io/github/munniomer/Send-IT-Api-v1?branch=ft-cancel-order-v1-161985069)
+[![Build Status](https://travis-ci.com/munniomer/Send-IT-Api-v1.svg?branch=develop)](https://travis-ci.com/munniomer/Send-IT-Api-v1)
+[![Coverage Status](https://coveralls.io/repos/github/munniomer/Send-IT-Api-v1/badge.svg?branch=develop)](https://coveralls.io/github/munniomer/Send-IT-Api-v1?branch=develop)
 
 ## The required API Endpoints that enable one:
  1. Create a parcel delivery order
