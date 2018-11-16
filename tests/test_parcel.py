@@ -93,3 +93,19 @@ class TestParcel(BaseTest):
         """Test for canceling the order that doesnt exist"""
         respon = self.client.get('/api/v1/parcels/100/cancel')
         self.assertEqual(respon.status_code, 404)
+
+    def test_user_order(self):
+        """Test for fetcing specific user orders"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/users/1/parcels')
+        self.assertEqual(respon.status_code, 200)
+
+    def test_for_user_order(self):
+        """Test for fetcing specific user orders that doesnt exists"""
+        self.client.post("/api/v1/user/register", json=self.new_user6)
+        self.client.post(
+            "/api/v1/parcels", json=self.new_parcel, content_type='application/json')
+        respon = self.client.get('/api/v1/users/100/parcels')
+        self.assertEqual(respon.status_code, 404)

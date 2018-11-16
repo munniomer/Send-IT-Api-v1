@@ -42,4 +42,9 @@ class ParcelModel(object):
             if parcel_Id == parcel["parcel_Id"]:
                 parcel.update({"status": "Cancelled"})
                 return parcel
-            
+
+    def get_user_orders(self,sender_Id):
+        """ Method for fetching all orders for a specific user"""
+        orders= [orders for orders in parcels if orders["sender_Id"]==sender_Id]
+        return orders
+
