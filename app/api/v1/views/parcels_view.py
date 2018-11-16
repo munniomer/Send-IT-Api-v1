@@ -79,3 +79,17 @@ class ParcelSpecific(Resource):
             return {"Parcel odered cancelled": parcel},200
         return {"message": "parcel does not exist"},404
 
+class UserParcels(Resource):
+    """ class for specific user orders"""
+
+    def get(self,userId):
+        """ Method for fetching all orders for specific user"""
+        #check if user exists
+        check_user = userobj.check_user(userId)
+        if not check_user:
+            return {'message': "That user does not exist"}, 404
+        orders = db.get_user_orders(userId)
+         #check if user has orders
+        if orders:
+            return {'All your oders': orders},200
+        return {'message': "User has not placed any orders yet"},404
